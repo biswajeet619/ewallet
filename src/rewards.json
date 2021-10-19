@@ -1,0 +1,27 @@
+[
+    {
+	"name": "Ikea",
+	"value": "10",
+	"points": "10",
+    "image":"https://www.linkpicture.com/q/256x256bb_3.jpeg"
+    },
+    {
+    "name": "Amazon",
+    "value": "20",
+    "points": "20",
+    "image":"https://www.linkpicture.com/q/Uiconstock-Socialmedia-Amazon_1.ico"
+    
+    },
+    {
+    "name": "Myntra",
+    "value": "10",
+    "points": "100",
+    "image":"https://www.linkpicture.com/q/myntra-2709168-2249158_1.png"
+    },
+    {
+    "name": "Swiggy",
+    "value": "20",
+    "points": "200",
+    "image":"https://www.linkpicture.com/q/swiggy-1613371-1369418_1.png"
+    }
+]
