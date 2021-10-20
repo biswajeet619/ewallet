@@ -13,7 +13,7 @@ function Rewards() {
 
     const handleRedeem = (name, points) => {
         const axios = require('axios');
-        const user = sessionStorage.getItem('email')
+        const user = sessionStorage.getItem("id");
         const url = `http://18.136.104.201:9090/redeem?voucher=${name}&&customer=${user}&&point=${points}`
         axios.get(url)
             .then(function (response) {
@@ -31,7 +31,7 @@ function Rewards() {
     }
     useEffect(() => {
         const axios = require('axios');
-        const user = sessionStorage.getItem('email');
+        const user = sessionStorage.getItem("id")
         // to get current points of the user
         axios.get('http://18.136.104.201:9090/getRewardState')
             .then(function (response) {
@@ -62,7 +62,7 @@ function Rewards() {
                     <Grid justify="center" alignItems="center" container spacing={3} >
             {rewardsJson.map(obj =>
                 <Grid>
-                    <Card sx={{ maxWidth: 340, marginLeft: "10%"}} >
+                    <Card sx={{ maxWidth: 380, marginLeft: "10%"}} >
                         <CardMedia
                             component="img"
                             image={obj.image}

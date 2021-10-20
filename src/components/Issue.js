@@ -17,7 +17,7 @@ const Issue = () => {
             .then(function (response) {
                 // handle success
                 console.log(response.data);
-                alert("Points issued to "+sessionStorage.getItem('uname'))
+                alert("Points issued")
                 // add progress bar in
             })
             .catch(function (error) {

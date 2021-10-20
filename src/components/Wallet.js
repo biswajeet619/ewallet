@@ -9,11 +9,11 @@ import { Link } from 'react-router-dom';
 function Wallet() {
     const [points, setPoints] = useState(0);
     const [vouchers, setVouchers] = useState([]);
-    const email = sessionStorage.getItem('email');
+    const id = sessionStorage.getItem("id");
 
     useEffect(() => {
         const axios = require('axios');
-        const user = sessionStorage.getItem('email');
+        const user = sessionStorage.getItem("id");
         // to get current points of the user
         axios.get('http://18.136.104.201:9090/getRewardState')
             .then(function (response) {
@@ -63,7 +63,7 @@ function Wallet() {
 
     return (
         <div>
-            <h2>Welcome {sessionStorage.getItem('uname')}!</h2>
+            <h2>Welcome</h2>
             <Card variant="outlined">
                 <h1>{sessionStorage.getItem('name')}</h1>
                 <h2> Available Points: {points}</h2>
@@ -79,12 +79,12 @@ function Wallet() {
                                 </CardContent>
                             </Card>
                         </Grid>
-                    )
+                    ).reverse()
                     }
                 </Grid>
         :<h1>Nothing to show</h1>}
 
-{email=="biswajeet15696@gmail.com" ? <Link to="/issue" ><h5 style={{ color: 'red' }}>Issue Points to Users </h5></Link> :<h2></h2>}
+{id=="biswojeetpanda" ? <Link to="/issue" ><h5 style={{ color: 'red' }}>Issue Points to Users </h5></Link> :<h2></h2>}
         
         </div>
     )

@@ -1,49 +1,54 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useGoogleLogin } from 'react-google-login';
+import userJson from '../users.json';
 import "./Login.css";
-import { refreshTokenSetup } from '../utils/refreshToken';
-import logo from '../google.png';
+import { useHistory } from "react-router-dom";
 
-const clientId='849175242152-oeo4psb2to7p6q9pbb1nkgi50ka7pin9.apps.googleusercontent.com'
+import logo from '../avatar.png';
+
 function Login() {
-  const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
-    sessionStorage.setItem('email', res.profileObj.email)
-    sessionStorage.setItem('uname', res.profileObj.name)
+  let history = useHistory();
+  let id = sessionStorage.getItem('id');
+  var index=0;
+  function handleLogin(uname, psw) {
+    var count=0;
     
-    refreshTokenSetup(res);
-  };
-  
+    for (var i = 0; i < userJson.length; i++) {
+      var obj = userJson[i];
+      // console.log(obj.customer);
+      if (obj.id == uname && obj.pass == psw) {
+        count=count+1;
+        index=i;
+      }
+    }
+    if(count==1){
+      history.push("/wallet");
+      sessionStorage.setItem('id',uname);
+      sessionStorage.setItem('name',userJson[index].name);
+      window.parent.location = window.parent.location.href;
+    }
+    else{
+      alert("invalid username or password")
+    }
 
-  const onFailure = (res) => {
-    console.log('Login failed: res:', res);
-    alert(
-      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
-    );
   };
-
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    clientId,
-    isSignedIn: true,
-    accessType: 'offline',
-    // responseType: 'code',
-    // prompt: 'consent',
-  });
 
   return (
-    <button onClick={signIn} className="button">
+    <div>
+      <div className="imgcontainer">
+        <img src={logo} style={{ width: "8%", height: "8%", marginTop:"2%"}} alt="Avatar" className="avatar" />
+      </div>
 
-      <img src={logo} alt="google login" className="icon"></img>
+      <div className="container">
+        <input className="input-t" type="text" placeholder="Enter Username" id="uname" required />
 
-      <span className="buttonText">Sign in with Google</span>
-    </button>
+        <input className="input-t" type="password" placeholder="Enter Password" id="psw" required />
+
+        <button className="button-t" onClick={() => handleLogin(document.getElementById('uname').value, document.getElementById('psw').value)}>Login</button>
+      </div>
+    </div>
+
   );
 }
 
