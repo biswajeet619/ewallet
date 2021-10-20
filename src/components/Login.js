@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import userJson from '../users.json';
 import "./Login.css";
 import { useHistory } from "react-router-dom";
@@ -17,12 +15,12 @@ function Login() {
     for (var i = 0; i < userJson.length; i++) {
       var obj = userJson[i];
       // console.log(obj.customer);
-      if (obj.id == uname && obj.pass == psw) {
+      if (obj.id === uname && obj.pass === psw) {
         count=count+1;
         index=i;
       }
     }
-    if(count==1){
+    if(count===1){
       history.push("/wallet");
       sessionStorage.setItem('id',uname);
       sessionStorage.setItem('name',userJson[index].name);

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
-import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 
@@ -23,7 +22,7 @@ function Wallet() {
                 for (var i = 0; i < response.data.length; i++) {
                     var obj = response.data[i];
                     // console.log(obj.customer);
-                    if (obj.customer == user) {
+                    if (obj.customer === user) {
                         amount += parseInt(obj.point);
                     }
                 }
@@ -46,7 +45,7 @@ function Wallet() {
                 for (var i = 0; i < response.data.length; i++) {
                     var obj = response.data[i];
                     // console.log(obj.customer);
-                    if (obj.customer == user) {
+                    if (obj.customer === user) {
                         voucherArray.push(obj)
                     }
                 }
@@ -84,7 +83,7 @@ function Wallet() {
                 </Grid>
         :<h1>Nothing to show</h1>}
 
-{id=="biswojeetpanda" ? <Link to="/issue" ><h5 style={{ color: 'red' }}>Issue Points to Users </h5></Link> :<h2></h2>}
+{id=="raymondfang" ? <Link to="/issue" ><h5 style={{ color: 'red' }}>Issue Points to Users </h5></Link> :<h2></h2>}
         
         </div>
     )
